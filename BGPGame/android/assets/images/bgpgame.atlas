@@ -1,0 +1,174 @@
+
+bgpgame.png
+size: 1024,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+10417
+  rotate: false
+  xy: 2, 145
+  size: 210, 170
+  orig: 210, 170
+  offset: 0, 0
+  index: -1
+10417-22548
+  rotate: false
+  xy: 792, 362
+  size: 8, 110
+  orig: 8, 110
+  offset: 0, 0
+  index: -1
+10715
+  rotate: false
+  xy: 214, 317
+  size: 210, 170
+  orig: 210, 170
+  offset: 0, 0
+  index: -1
+10715-1916
+  rotate: false
+  xy: 325, 14
+  size: 5, 120
+  orig: 5, 120
+  offset: 0, 0
+  index: -1
+10715-22548
+  rotate: false
+  xy: 307, 136
+  size: 145, 7
+  orig: 145, 7
+  offset: 0, 0
+  index: -1
+10715-53208
+  rotate: false
+  xy: 156, 18
+  size: 149, 125
+  orig: 149, 125
+  offset: 0, 0
+  index: -1
+1916
+  rotate: false
+  xy: 2, 317
+  size: 210, 170
+  orig: 210, 170
+  offset: 0, 0
+  index: -1
+1916-22548
+  rotate: false
+  xy: 2, 18
+  size: 152, 125
+  orig: 152, 125
+  offset: 0, 0
+  index: -1
+1916-53208
+  rotate: false
+  xy: 2, 11
+  size: 149, 5
+  orig: 149, 5
+  offset: 0, 0
+  index: -1
+22548
+  rotate: false
+  xy: 214, 145
+  size: 210, 170
+  orig: 210, 170
+  offset: 0, 0
+  index: -1
+22548-53208
+  rotate: false
+  xy: 307, 14
+  size: 7, 120
+  orig: 7, 120
+  offset: 0, 0
+  index: -1
+262742
+  rotate: false
+  xy: 426, 145
+  size: 210, 170
+  orig: 210, 170
+  offset: 0, 0
+  index: -1
+262742-10417
+  rotate: false
+  xy: 638, 227
+  size: 146, 6
+  orig: 146, 6
+  offset: 0, 0
+  index: -1
+262742-10715
+  rotate: false
+  xy: 339, 24
+  size: 6, 110
+  orig: 6, 110
+  offset: 0, 0
+  index: -1
+53208
+  rotate: false
+  xy: 426, 317
+  size: 210, 170
+  orig: 210, 170
+  offset: 0, 0
+  index: -1
+r10417-22548
+  rotate: false
+  xy: 789, 250
+  size: 8, 110
+  orig: 8, 110
+  offset: 0, 0
+  index: -1
+r10715-1916
+  rotate: false
+  xy: 332, 14
+  size: 5, 120
+  orig: 5, 120
+  offset: 0, 0
+  index: -1
+r10715-22548
+  rotate: false
+  xy: 2, 2
+  size: 145, 7
+  orig: 145, 7
+  offset: 0, 0
+  index: -1
+r10715-53208
+  rotate: false
+  xy: 638, 235
+  size: 149, 125
+  orig: 149, 125
+  offset: 0, 0
+  index: -1
+r1916-22548
+  rotate: false
+  xy: 638, 362
+  size: 152, 125
+  orig: 152, 125
+  offset: 0, 0
+  index: -1
+r1916-53208
+  rotate: false
+  xy: 792, 482
+  size: 149, 5
+  orig: 149, 5
+  offset: 0, 0
+  index: -1
+r22548-53208
+  rotate: false
+  xy: 316, 14
+  size: 7, 120
+  orig: 7, 120
+  offset: 0, 0
+  index: -1
+r262742-10417
+  rotate: false
+  xy: 792, 474
+  size: 146, 6
+  orig: 146, 6
+  offset: 0, 0
+  index: -1
+r262742-10715
+  rotate: false
+  xy: 802, 362
+  size: 6, 110
+  orig: 6, 110
+  offset: 0, 0
+  index: -1
