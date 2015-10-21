@@ -4,10 +4,7 @@ package br.nic.bgp.actors;
 
 import br.nic.bgp.Assets;
 import br.nic.bgp.WorldController;
-import br.nic.bgp.levels.Level_01;
 import br.nic.bgp.models.AsModel;
-import br.nic.bgp.models.BlocIP4Model;
-import br.nic.bgp.models.RouteModel;
 import br.nic.bgp.ui.RibWindow;
 import br.nic.bgp.utils.Constants;
 
@@ -15,17 +12,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
-import com.sun.corba.se.impl.encoding.CodeSetConversion.BTCConverter;
 
 public class As extends Image {
 	
@@ -33,8 +23,8 @@ public class As extends Image {
 	private boolean      _touched;
 	private ScrollPane scroll;
 	private AsModel _as_instance;
-	
-	
+	private boolean _lock;
+
 
 	
 	public As(int asn)
@@ -42,6 +32,7 @@ public class As extends Image {
 		super(Assets.instance.asTextures.getRegion(asn));
 		Init(asn);
 		this._touched = false;
+		this._lock    = false;
 	
 	}
 	
@@ -53,11 +44,27 @@ public class As extends Image {
 
 		setTouchable(Touchable.enabled);
 		setName(String.valueOf(asn));
-		
-		addListener(new ClickListener(){
-			
+
+
+		addListener(new InputListener(){
+
 			@Override
-			public void clicked(InputEvent event, float x, float y) {
+			public void exit(InputEvent event, float x, float y, int pointer,
+					Actor toActor) {
+				//WorldController.get_current_level().getRoot().removeActor(As.this.scroll);
+				if(Constants.INITIATED)
+				{
+					if(!As.this._lock)
+					{
+						As.this.scroll.setVisible(false);
+				
+					}
+				}
+				super.exit(event, x, y, pointer, toActor);
+			}
+			@Override
+			public void enter(InputEvent event, float x, float y, int pointer,
+					Actor fromActor) {
 				Gdx.app.log(TAG, "Touched "+_as_instance._ASN);
 				if(!Constants.INITIATED)
 				{
@@ -65,37 +72,43 @@ public class As extends Image {
 				}
 				else
 				{
-					
-					if(!As.this._touched)
+					if(As.this._touched)
 					{
-						RibWindow window = new RibWindow( "RIB", Assets.instance.skin,As.this);
-						As.this.scroll = new ScrollPane(window, Assets.instance.skin);
-						As.this.scroll.setSize(400, 300);
-						As.this.scroll.setColor(Color.BLACK);
-						As.this.scroll.setPosition(As.this.getX() + As.this.getWidth(), As.this.getY());
-						As.this.scroll.setScale(0.70f);
-						WorldController.get_current_level().getRoot().addActor(As.this.scroll);
-						As.this._touched = true;
+						As.this.scroll.setVisible(true);
 					}
 					else
 					{
-						WorldController.get_current_level().getRoot().removeActor(As.this.scroll);
-						As.this._touched = false;
+						RibWindow window = new RibWindow( "RIB", Assets.instance.skin,As.this);
+						As.this.scroll = new ScrollPane(window, Assets.instance.skin);
+						As.this.scroll.setSize(450, 150);
+						As.this.scroll.setColor(Color.BLACK);
+						As.this.scroll.setPosition(Constants.CAMERA.position.x, Constants.CAMERA.position.y);
+						As.this.scroll.setScale(0.40f);
+						WorldController.get_current_level().getRoot().addActor(As.this.scroll);
+						As.this._touched = true;
+					
 					}
 				}
 				
 				
 			}
+			
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				if(As.this._lock)
+				{
+					As.this._lock = false;
+				}else
+				{
+					if(!As.this._lock)
+						As.this._lock = true;
+				}
+				return super.touchDown(event, x, y, pointer, button);
+			}
 		});
 				
 	}
-	
-	
-
-
-	
-	
-
 	
 
 	public AsModel get_as_instance() {

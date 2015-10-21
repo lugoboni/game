@@ -65,7 +65,6 @@ public class RibWindow extends Table {
 		tablatemp.add(Origem).left().padRight(15f);
 		tablatemp.add(Destino).left().padRight(15f);
 		tablatemp.add(Aspath).row();
-		
 		_conter += delta;
 		
 		tablatemp.setSize(super.getWidth(), super.getHeight());

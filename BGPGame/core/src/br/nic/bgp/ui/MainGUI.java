@@ -1,13 +1,17 @@
 package br.nic.bgp.ui;
 
 import br.nic.bgp.Assets;
+import br.nic.bgp.utils.Constants;
+import br.nic.bgp.utils.WorldMethods;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 public class MainGUI {
 	
@@ -30,10 +34,20 @@ public class MainGUI {
 		_menu = new HorizontalGroup();
 		_menu.addActor(scroll);
 		_menu.addActor(_menu_secondary);
-		_menu.setPosition(600, 100);
-		_menu.setSize(80, 40);
-		_menu.scaleBy(-0.5f);
+		_menu.setPosition(Constants.CAMERA.position.x + 100, Constants.CAMERA.position.y - 300);
+		_menu.setSize(500, 400);
+		_menu.scaleBy(-0.4f);
 		
+		_menu_main.addListener(new ClickListener(){
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				if(MainGUI._menu_main.getSelected() == "Atualizar")
+				{
+					WorldMethods.INIT_SCENARIO();
+				}
+				super.clicked(event, x, y);
+			}
+		});
 	}
 
 

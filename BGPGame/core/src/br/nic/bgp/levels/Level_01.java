@@ -5,11 +5,9 @@ import br.nic.bgp.actors.As;
 import br.nic.bgp.actors.Link;
 import br.nic.bgp.models.BlocIP4Model;
 import br.nic.bgp.ui.MainGUI;
-import br.nic.bgp.ui.TableUI;
 import br.nic.bgp.utils.Constants;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -32,7 +30,7 @@ public class Level_01 extends Stage {
 	private Link _262742_10417;
 	private Link _262742_10715;
 	private static Group grupo;
-	
+
 	public Level_01(Viewport view) {
 		super(view);
 		
@@ -78,6 +76,8 @@ public class Level_01 extends Stage {
 		grupo.addActor(_1916_53208);
 		grupo.addActor(_10715_53208);
 		grupo.addActor(_22548_53208);
+		
+		grupo.setSize(300, 400);
 		
 		this.addActor(grupo);
 		grupo.scaleBy(-0.5f);
@@ -131,9 +131,8 @@ public class Level_01 extends Stage {
 		this._1916.setBounds(this._1916.getX(), this._1916.getY(), this._1916.getWidth(), this._1916.getHeight());
 		this._262742.setBounds(this._262742.getX(), this._262742.getY(), this._262742.getWidth(), this._262742.getHeight());
 		
-		TableUI._instance.init();
+		
 		new MainGUI();
-		super.addActor(TableUI._instance.get_menu());
 		super.addActor(MainGUI.get_menu());
 		
 		
@@ -182,32 +181,36 @@ public class Level_01 extends Stage {
 		getGrupo().addActor(actor);
 	}
 	
+
 	@Override
-	public boolean keyDown(int keyCode) {
-		if(keyCode == Input.Keys.RIGHT)
-		{
-			Gdx.app.debug("DEBUG", "GO");
-			Constants.CAMERA.translate(10f,0);
-		}
-		if(keyCode == Input.Keys.LEFT)
-		{
-			Gdx.app.debug("DEBUG", "GO");
-			Constants.CAMERA.translate(-10f,0);
-		}
-		if(keyCode == Input.Keys.UP)
-		{
-			Gdx.app.debug("DEBUG", "GO");
-			Constants.CAMERA.translate(0f,10f);
-		}
-		if(keyCode == Input.Keys.DOWN)
-		{
-			Gdx.app.debug("DEBUG", "GO");
-			Constants.CAMERA.translate(0f,-10);
-		}
-		return super.keyDown(keyCode);
+	public boolean mouseMoved(int screenX, int screenY) {
+		Constants.lockx = screenX;
+		Constants.locky = screenY;
+		return super.mouseMoved(screenX, screenY);
 	}
-	
-	
-	
+
+	@Override
+	public void act(float delta) {
+		if(Constants.lockx >= (Gdx.graphics.getWidth() - 20))
+		{
+			Constants.CAMERA.translate(2, 0, 0);
+			
+		}
+		if(Constants.lockx <= 10)
+		{
+			Constants.CAMERA.translate(-2, 0, 0);
+		}
+		if(Constants.locky >= (Gdx.graphics.getHeight() - 20))
+		{
+			Constants.CAMERA.translate(0, -2, 0);
+		}
+		if(Constants.locky <= 10)
+		{
+			Constants.CAMERA.translate(0, 2, 0);
+		}
+		
+		MainGUI.get_menu().setPosition(Constants.CAMERA.position.x + 100, Constants.CAMERA.position.y - 300);
+		super.act(delta);
+	}	
 	
 }

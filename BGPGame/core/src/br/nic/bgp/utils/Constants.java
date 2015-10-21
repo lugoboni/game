@@ -14,7 +14,7 @@ public class Constants {
 
 	public static final float VIEWPORT_WIDTH = 1000;
 	
-	public static final float VIEWPORT_HEIGHT = 500;
+	public static final float VIEWPORT_HEIGHT = 1000;
 	
 	public static float       ASPECT_RATIO = (float) Gdx.graphics.getHeight()/(float) Gdx.graphics.getWidth();
 	
@@ -40,7 +40,7 @@ public class Constants {
 	
 	public static final float UPDATE_RATE = 1.0f;
 	
-	
+	public static int lockx, locky;
 	
 	
 	
